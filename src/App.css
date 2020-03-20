@@ -1,38 +1,103 @@
-.App {
-  text-align: center;
+html {
+    height: 100%;
+    --rand-color: green;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  
+html body {
+    font-family: helvetica, sans-serif;
+    background-color: var(--rand-color);
+    height: 97%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    transition: 1.5s;
+    -webkit-transition: 1.5s;
+    -moz-transition: 1.5s;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  
+html body main {
+    color: var(--rand-color);
+    background-color: rgb(228, 230, 228);
+    width: 100%;
+    max-width: 550px;
+    padding: 40px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;  
+    transition: 1.5s;
+    -webkit-transition: 1.5s;
+    -moz-transition: 1.5s;
+}
+  
+html body main .quote {  
+    width: 100%;
+}
+  
+html body main .quote p {
+    font-size: 2rem;
+    word-wrap: break-word;
+}
+  
+html body main .quote p i {
+    display: inline;
+}
+  
+html body main .quote #cite {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+}
+  
+html body main .footer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin-top: 35px;
+}
+  
+html body main .footer button, html body main .footer a {  
+    color: rgb(228, 230, 228);
+    padding: 10px 20px;
+    background-color: var(--rand-color);
+    text-align: center;
+    border-radius: 3px;
+    border: none;
+    margin: 3px;
+    transition: 1.5s;
+    -webkit-transition: 1.5s;
+      -moz-transition: 1.5s;
+}
+  
+html body main .footer a {
+    text-decoration: none;
+    display: inline-block;
+    width: 18px;
+}
+  
+@media (max-width: 350px) {
+  html body main {
+    padding: 10px;
+}
+  
+  html body main .footer a {
+    width: 10%;
+  }
+  
+  html body main .footer button {
+    width: 60px;
+    padding: 5px 10px;
   }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+  
+  /*# sourceMappingURL=index.css.map */
