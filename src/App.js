@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import Quotes from './components/quote';
 import Buttons from './components/buttons';
 import './App.css';
@@ -7,8 +7,8 @@ function App() {
   const [colors] = useState(["#4287f5", "#42ecf5", "#42f584", "#37d925", "#b3f538", "#d1d11f", "#fc8535", "#fc3535", "#b537f0", "#e635d1", "#8a7f83", "#303030"])
   const [quotes, setQuotes] = useState([
     {
-      text: 'haha',
-      author: 'haha'
+      text: '',
+      author: ''
     }
   ])
   const [color, setColor] = useState(0);
@@ -20,7 +20,7 @@ function App() {
     document.getElementsByTagName("html")[0].style.setProperty("--rand-color", colors[color])
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     fetch("https://type.fit/api/quotes")
     .then(response => response.json())
     .then(responseData => {
@@ -29,7 +29,7 @@ function App() {
       setQuote(parseInt(Math.random() * responseData.length));
     })
     .catch(err => console.log(err, err.data));
-    document.getElementsByTagName("html")[0].style.setProperty("--rand-color", colors[color]);
+    document.documentElement.style.setProperty("--rand-color", colors[color]);
   }, [])
 
   return (
@@ -37,7 +37,7 @@ function App() {
       <Quotes text={quotes[quote].text} author={quotes[quote].author} />
       <Buttons text={quotes[quote].text} author={quotes[quote].author} newQuote={newQuote} />
     </main>
-  )
+  )  
 }
 
 export default App;
