@@ -8,7 +8,7 @@ export default function Buttons(props) {
     return (
         <div className="footer">
             <div className="social">
-                <a href={twitterLink} title="share to Twitter" target="_blank" rel="noopener noreferrer"><i className="fab fa-twitter"></i></a>
+                <a href={twitterLink} title="share to Twitter" target="_blank" rel="noopener noreferrer"><i className="fab fa-twitter"></i></a>              
                 <a href={tumblrLink} title="share to Tumblr" target="_blank" rel="noopener noreferrer"><i className="fab fa-tumblr"></i></a>
             </div>
             <div className="new-quote">
