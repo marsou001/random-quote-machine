@@ -1,9 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { getQuote } from '../actions/quotesAction';
+import { connect } from 'react-redux';
 
-export default function Buttons(props) {
-    const { text, author, newQuote } = props;
-    const twitterLink = `https://twitter.com/intent/tweet?hashtags=quotes&text="${encodeURIComponent(text)}" ${encodeURIComponent(author)}`
-    const tumblrLink = `https://www.tumblr.com/widgets/share/tool?posttype=quote&tags=quotes&caption=${encodeURIComponent(author)}&content=${encodeURIComponent(text)}&canonicalUrl=https%3A%2F%2Fwww.tumblr.com%2Fbuttons&shareSource=tumblr_share_button`
+function Buttons(props) {    
+    const twitterLink = `https://twitter.com/intent/tweet?hashtags=quotes&text="${encodeURIComponent(props.text)}" ${encodeURIComponent(props.author)}`
+    const tumblrLink = `https://www.tumblr.com/widgets/share/tool?posttype=quote&tags=quotes&caption=${encodeURIComponent(props.author)}&content=${encodeURIComponent(props.text)}&canonicalUrl=https%3A%2F%2Fwww.tumblr.com%2Fbuttons&shareSource=tumblr_share_button`
 
     return (
         <div className="footer">
@@ -12,9 +14,21 @@ export default function Buttons(props) {
                 <a href={tumblrLink} title="share to Tumblr" target="_blank" rel="noopener noreferrer"><i className="fab fa-tumblr"></i></a>
             </div>
             <div className="new-quote">
-                <button type="button" title="New quote" onClick={newQuote}>New quote</button>
+                <button type="button" title="New quote" onClick={props.getQuote}>New quote</button>
             </div>
         </div>
     )
 }
 
+Buttons.propTypes = { 
+    text: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    getQuote: PropTypes.func.isRequired
+}
+
+const mapStateToProps = state => ({    
+    text: state.quote.quotes[state.quote.quote].text,
+    author: state.quote.quotes[state.quote.quote].author
+});
+
+export default connect(mapStateToProps, { getQuote })(Buttons);
